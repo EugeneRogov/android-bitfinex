@@ -13,4 +13,10 @@ class CurrencyDetail : Fragment(R.layout.currency_detail_fragment) {
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        
+    }
+
 }
