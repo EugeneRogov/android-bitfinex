@@ -1,9 +1,13 @@
 package ru.eugenerogov.ui
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import ru.eugenerogov.data.Currency
 
 class CurrencyListViewModel : ViewModel() {
+    companion object {
+        val TAG: String = CurrencyListViewModel::class.java.simpleName
+    }
 
     val currencyList = mutableSetOf<Currency>()
 
@@ -15,7 +19,11 @@ class CurrencyListViewModel : ViewModel() {
             currency._24HoursChange = 6.7F
             currencyList += currency
         }
+    }
 
+    override fun onCleared() {
+        super.onCleared()
+        Log.i(TAG, "onCleared")
     }
 
 }

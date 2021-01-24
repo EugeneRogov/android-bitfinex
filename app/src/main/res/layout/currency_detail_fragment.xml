@@ -4,7 +4,7 @@
     <data>
 
         <variable
-            name="employee"
+            name="currencyDetailModel"
             type="ru.eugenerogov.data.binding.CurrencyDetailModel" />
     </data>
 
