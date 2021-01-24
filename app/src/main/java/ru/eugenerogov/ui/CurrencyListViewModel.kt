@@ -5,10 +5,10 @@ import ru.eugenerogov.data.Currency
 
 class CurrencyListViewModel : ViewModel() {
 
-    private val currencyList = mutableSetOf<Currency>()
+    val currencyList = mutableSetOf<Currency>()
 
     init {
-        for (i in 0 until 2) {
+        for (i in 0 until 3) {
             val currency = Currency()
             currency.currencyPair = "ETH/USD"
             currency.lastPrice = 1334.0
