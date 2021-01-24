@@ -5,7 +5,7 @@
 
         <variable
             name="employee"
-            type="ru.eugenerogov.data.CurrencyListModel" />
+            type="ru.eugenerogov.data.binding.CurrencyListModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
