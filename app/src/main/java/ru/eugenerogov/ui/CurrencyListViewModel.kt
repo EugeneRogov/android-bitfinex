@@ -2,9 +2,13 @@ package ru.eugenerogov.ui
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import okhttp3.*
+import org.json.JSONArray
 import ru.eugenerogov.ServerHost
 import ru.eugenerogov.data.Currency
+
 
 class CurrencyListViewModel : ViewModel() {
     companion object {
@@ -32,6 +36,7 @@ class CurrencyListViewModel : ViewModel() {
         val request: Request = Request.Builder().url(ServerHost.WSS_BITFINEX).build()
         val bitfinexWebSocket = BitfinexWebSocket()
         ws = client.newWebSocket(request, bitfinexWebSocket)
+
         client.dispatcher.executorService.shutdown()
     }
 
@@ -47,7 +52,17 @@ class CurrencyListViewModel : ViewModel() {
             super.onOpen(webSocket, response)
             Log.i(TAG, "onOpen")
 
-            webSocket.send("Hello, it's cheerful")
+            webSocket.send(
+                "{\n" +
+                        "   \"event\":\"subscribe\",\n" +
+                        "   \"channel\":\"ticker\",\n" +
+                        "   \"pair\":\"BTCUSD\"\n" +
+                        "}"
+            )
+
+
+
+
         }
 
         override fun onMessage(webSocket: WebSocket, text: String) {
