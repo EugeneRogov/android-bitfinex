@@ -10,7 +10,7 @@ class CurrencyDetailViewModel : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        Log.i(CurrencyListViewModel.TAG, "onCleared")
+        Log.i(TAG, "onCleared")
     }
 
 }
