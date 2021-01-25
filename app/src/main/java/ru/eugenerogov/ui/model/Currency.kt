@@ -1,4 +1,4 @@
-package ru.eugenerogov.data
+package ru.eugenerogov.ui.model
 
 import java.util.*
 

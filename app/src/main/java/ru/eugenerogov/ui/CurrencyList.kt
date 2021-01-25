@@ -13,9 +13,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.eugenerogov.R
-import ru.eugenerogov.data.Currency
 import ru.eugenerogov.databinding.CurrencyListFragmentBinding
 import ru.eugenerogov.databinding.CurrencyListItemBinding
+import ru.eugenerogov.ui.model.Currency
 
 class CurrencyList : Fragment(R.layout.currency_list_fragment) {
     companion object {
@@ -37,6 +37,8 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
             layoutManager = LinearLayoutManager(context)
             adapter = CurrencyListAdapter(model.currencyList.toList())
         }
+
+
     }
 
     private inner class CurrencyHolder(private val binding: CurrencyListItemBinding) :
