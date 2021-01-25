@@ -5,17 +5,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.eugenerogov.R
+import ru.eugenerogov.data.remote.Ticker
 import ru.eugenerogov.databinding.CurrencyListFragmentBinding
 import ru.eugenerogov.databinding.CurrencyListItemBinding
-import ru.eugenerogov.ui.model.Currency
 
 class CurrencyList : Fragment(R.layout.currency_list_fragment) {
     companion object {
@@ -33,12 +35,15 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
         super.onViewCreated(view, savedInstanceState)
         val binding = CurrencyListFragmentBinding.bind(view)
 
+        // observe refresh
+        model.ticker().observe(viewLifecycleOwner, Observer {
+            Toast.makeText(requireContext(), it.title, Toast.LENGTH_SHORT).show()
+        })
+
         binding.rv.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = CurrencyListAdapter(model.currencyList.toList())
+            adapter = CurrencyListAdapter(model.tickerList.toList())
         }
-
-
     }
 
     private inner class CurrencyHolder(private val binding: CurrencyListItemBinding) :
@@ -50,7 +55,7 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
         val tv24HoursChange: TextView = binding.tv24HoursChange
     }
 
-    private inner class CurrencyListAdapter(var currencyList: List<Currency>) :
+    private inner class CurrencyListAdapter(var currencyList: List<Ticker>) :
         RecyclerView.Adapter<CurrencyHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyHolder {
@@ -64,11 +69,11 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
         }
 
         override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
-            val currency = currencyList[position]
+            val ticker = currencyList[position]
             holder.apply {
-                tvCurrencyPair.text = currency.currencyPair
-                tvLastPrice.text = currency.lastPrice.toString()
-                tv24HoursChange.text = currency._24HoursChange.toString()
+                tvCurrencyPair.text = ticker.title
+                tvLastPrice.text = ticker.lastPrice.toString()
+                tv24HoursChange.text = ticker.dailyChange.toString()
                 cl.setOnClickListener {
                     findNavController().navigate(R.id.action_currencyList_to_currencyDetail)
                 }

@@ -7,8 +7,6 @@ import androidx.lifecycle.ViewModel
 import okhttp3.*
 import ru.eugenerogov.ServerHost
 import ru.eugenerogov.data.remote.Ticker
-import ru.eugenerogov.ui.model.Currency
-
 
 class CurrencyListViewModel : ViewModel() {
     companion object {
@@ -16,7 +14,7 @@ class CurrencyListViewModel : ViewModel() {
         private const val NORMAL_CLOSURE_STATUS = 1000
     }
 
-    val currencyList = mutableSetOf<Currency>()
+    val tickerList = mutableListOf<Ticker>()
 
     private var client: OkHttpClient = OkHttpClient()
     private var ws: WebSocket
@@ -30,11 +28,12 @@ class CurrencyListViewModel : ViewModel() {
     init {
         // mock data
         for (i in 0 until 3) {
-            val currency = Currency()
-            currency.currencyPair = "ETH/USD"
-            currency.lastPrice = 1334.0
-            currency._24HoursChange = 6.7F
-            currencyList += currency
+            val ticker = Ticker()
+            ticker.title = "ETH/USD"
+            ticker.lastPrice = 1334.0F
+            ticker.dailyChange = 6.8F
+
+            tickerList += ticker
         }
 
         // init Web Socket connection
@@ -70,7 +69,8 @@ class CurrencyListViewModel : ViewModel() {
 
             // TODO: not good filter for catch ticker, this temporary
             if (text.startsWith("[")) {
-                val tickerArray = text.replace("]", "").replace("[", "").filter { !it.isWhitespace() }
+                val tickerArray =
+                    text.replace("]", "").replace("[", "").filter { !it.isWhitespace() }
                 val ticker = Ticker()
                 ticker.title = "BTCUSD"
                 ticker.id = tickerArray[0].toInt()
