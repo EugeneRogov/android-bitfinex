@@ -1,5 +1,9 @@
 package ru.eugenerogov.data.remote
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Ticker(
     var title: String = "",
     var urlIcon: String = "",
@@ -16,5 +20,5 @@ data class Ticker(
     var volume: Float = 0.0F,
     var high: Float = 0.0F,
     var low: Float = 0.0F,
-) {
+) : Parcelable {
 }

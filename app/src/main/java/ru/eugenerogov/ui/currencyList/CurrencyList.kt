@@ -77,9 +77,8 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
                 tvLastPrice.text = ticker.lastPrice.toString()
                 tv24HoursChange.text = ticker.dailyChange.toString()
                 cl.setOnClickListener {
-                    val tickerId = ticker.id
-                    val action = CurrencyListDirections.actionCurrencyListToCurrencyDetail(tickerId)
-                    findNavController().navigate(action)
+                    val directions = CurrencyListDirections.actionCurrencyListToCurrencyDetail(ticker)
+                    findNavController().navigate(directions)
                 }
             }
         }

@@ -18,9 +18,8 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right">
             <argument
-                android:name="id"
-                android:defaultValue="0"
-                app:argType="integer" />
+                android:name="ticker"
+                app:argType="ru.eugenerogov.data.remote.Ticker" />
         </action>
     </fragment>
 
