@@ -10,7 +10,7 @@
         tools:context=".ui.CurrencyList">
 
         <ImageView
-            android:id="@+id/ivFavorite"
+            android:id="@+id/ivLogo"
             android:layout_width="@dimen/size_star_icon"
             android:layout_height="@dimen/size_star_icon"
             android:contentDescription="@string/favorite"
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivFavorite"
+            app:layout_constraintStart_toEndOf="@+id/ivLogo"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="ETH/USD" />
 

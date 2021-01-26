@@ -16,7 +16,12 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="id"
+                android:defaultValue="0"
+                app:argType="integer" />
+        </action>
     </fragment>
 
     <fragment

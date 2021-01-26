@@ -9,14 +9,12 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.eugenerogov.R
-import ru.eugenerogov.data.local.CurrencyPair
 import ru.eugenerogov.data.remote.Ticker
 import ru.eugenerogov.databinding.CurrencyListFragmentBinding
 import ru.eugenerogov.databinding.CurrencyListItemBinding
@@ -38,7 +36,7 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
         val binding = CurrencyListFragmentBinding.bind(view)
 
         // observe refresh
-        model.ticker().observe(viewLifecycleOwner, Observer {
+        model.ticker().observe(viewLifecycleOwner, {
             Toast.makeText(requireContext(), it.title, Toast.LENGTH_SHORT).show()
         })
 
@@ -51,7 +49,7 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
     private inner class CurrencyHolder(private val binding: CurrencyListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val cl: ConstraintLayout = binding.cl
-        val ivFavorite: ImageView = binding.ivFavorite
+        val ivFavorite: ImageView = binding.ivLogo
         val tvCurrencyPair: TextView = binding.tvCurrencyPair
         val tvLastPrice: TextView = binding.tvLastPrice
         val tv24HoursChange: TextView = binding.tv24HoursChange
@@ -78,7 +76,9 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
                 tvLastPrice.text = ticker.lastPrice.toString()
                 tv24HoursChange.text = ticker.dailyChange.toString()
                 cl.setOnClickListener {
-                    findNavController().navigate(R.id.action_currencyList_to_currencyDetail)
+                    val tickerId = ticker.id
+                    val action = CurrencyListDirections.actionCurrencyListToCurrencyDetail(tickerId)
+                    findNavController().navigate(action)
                 }
             }
         }
