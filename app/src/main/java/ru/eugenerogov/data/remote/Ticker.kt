@@ -2,6 +2,8 @@ package ru.eugenerogov.data.remote
 
 data class Ticker(
     var title: String = "",
+    var urlIcon: String = "",
+
     var id: Int = 0,
     var channelId: Int = 0,
     var bid: Float = 0.0f,

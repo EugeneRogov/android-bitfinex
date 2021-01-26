@@ -14,7 +14,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import ru.eugenerogov.R
+import ru.eugenerogov.data.local.CurrencyPair
 import ru.eugenerogov.data.remote.Ticker
 import ru.eugenerogov.databinding.CurrencyListFragmentBinding
 import ru.eugenerogov.databinding.CurrencyListItemBinding
@@ -71,6 +73,7 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
         override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
             val ticker = currencyList[position]
             holder.apply {
+                Glide.with(requireContext()).load(ticker.urlIcon).into(ivFavorite)
                 tvCurrencyPair.text = ticker.title
                 tvLastPrice.text = ticker.lastPrice.toString()
                 tv24HoursChange.text = ticker.dailyChange.toString()
