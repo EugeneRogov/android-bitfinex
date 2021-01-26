@@ -1,11 +1,11 @@
-package ru.eugenerogov.ui
+package ru.eugenerogov.ui.currencyList
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import okhttp3.*
-import ru.eugenerogov.ServerHost
+import ru.eugenerogov.data.remote.ServerHost
 import ru.eugenerogov.data.local.CurrencyPair
 import ru.eugenerogov.data.remote.Ticker
 
@@ -65,6 +65,8 @@ class CurrencyListViewModel : ViewModel() {
                         text.replace("]", "").replace("[", "").filter { !it.isWhitespace() }
                     val ticker = Ticker()
                     ticker.title = CurrencyPair.BTC.title
+                    ticker.urlIcon = CurrencyPair.BTC.urlIcon
+
                     ticker.id = tickerArray[0].toInt()
                     ticker.channelId = tickerArray[1].toInt()
                     ticker.bid = tickerArray[2].toFloat()
@@ -77,6 +79,9 @@ class CurrencyListViewModel : ViewModel() {
                     ticker.volume = tickerArray[9].toFloat()
                     ticker.high = tickerArray[10].toFloat()
                     ticker.low = tickerArray[11].toFloat()
+
+                    tickerList.add(ticker)
+                    ldTicker.postValue(ticker)
 
                     Log.i(TAG, "onMessage ticker $tickerArray")
                 }

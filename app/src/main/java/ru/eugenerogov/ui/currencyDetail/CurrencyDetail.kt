@@ -1,10 +1,9 @@
-package ru.eugenerogov.ui
+package ru.eugenerogov.ui.currencyDetail
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
 import ru.eugenerogov.R
 import ru.eugenerogov.databinding.CurrencyDetailFragmentBinding
 

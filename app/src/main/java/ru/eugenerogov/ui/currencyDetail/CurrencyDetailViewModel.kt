@@ -1,4 +1,4 @@
-package ru.eugenerogov.ui
+package ru.eugenerogov.ui.currencyDetail
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

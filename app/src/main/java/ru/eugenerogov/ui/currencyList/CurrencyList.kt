@@ -1,4 +1,4 @@
-package ru.eugenerogov.ui
+package ru.eugenerogov.ui.currencyList
 
 import android.os.Bundle
 import android.view.View
@@ -37,12 +37,13 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
 
         // observe refresh
         model.ticker().observe(viewLifecycleOwner, {
-            Toast.makeText(requireContext(), it.title, Toast.LENGTH_SHORT).show()
+            binding.rv.adapter?.notifyDataSetChanged()
+            Toast.makeText(requireContext(), getString(R.string.refreshed), Toast.LENGTH_SHORT).show()
         })
 
         binding.rv.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = CurrencyListAdapter(model.tickerList.toList())
+            adapter = CurrencyListAdapter(model.tickerList)
         }
     }
 

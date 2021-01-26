@@ -5,14 +5,14 @@
 
         <variable
             name="currencyDetailModel"
-            type="ru.eugenerogov.data.binding.CurrencyDetailModel" />
+            type="ru.eugenerogov.ui.currencyDetail.CurrencyDetailModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.CurrencyList">
+        tools:context=".ui.currencyList.CurrencyList">
 
         <TextView
             android:id="@+id/textView"
