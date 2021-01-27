@@ -1,6 +1,7 @@
 package ru.eugenerogov.ui.currencyList
 
 import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +10,9 @@ import ru.eugenerogov.data.remote.ServerHost
 import ru.eugenerogov.data.local.CurrencyPair
 import ru.eugenerogov.data.remote.Ticker
 
-class CurrencyListViewModel : ViewModel() {
+class CurrencyListViewModel @ViewModelInject constructor(
+
+) : ViewModel() {
     companion object {
         val TAG: String = CurrencyListViewModel::class.java.simpleName
         private const val NORMAL_CLOSURE_STATUS = 1000
@@ -41,7 +44,7 @@ class CurrencyListViewModel : ViewModel() {
         // init Web Socket connection
         // TODO: getting remote data need create from Repository, this temporary
         val request: Request = Request.Builder().url(ServerHost.WSS_BITFINEX).build()
-        ws = client.newWebSocket(request, object : WebSocketListener(){
+        ws = client.newWebSocket(request, object : WebSocketListener() {
             override fun onOpen(webSocket: WebSocket, response: Response) {
                 super.onOpen(webSocket, response)
                 Log.i(TAG, "onOpen")

@@ -9,26 +9,29 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import dagger.hilt.android.AndroidEntryPoint
 import ru.eugenerogov.R
 import ru.eugenerogov.data.remote.Ticker
 import ru.eugenerogov.databinding.CurrencyListFragmentBinding
 import ru.eugenerogov.databinding.CurrencyListItemBinding
 
+@AndroidEntryPoint
 class CurrencyList : Fragment(R.layout.currency_list_fragment) {
     companion object {
         val TAG: String = CurrencyList::class.java.simpleName
     }
 
-    private lateinit var model: CurrencyListViewModel
+    private val viewModel: CurrencyListViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        model = ViewModelProvider(this).get(CurrencyListViewModel::class.java)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,14 +39,14 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
         val binding = CurrencyListFragmentBinding.bind(view)
 
         // observe refresh
-        model.ticker().observe(viewLifecycleOwner, {
+        viewModel.ticker().observe(viewLifecycleOwner, {
             binding.rv.adapter?.notifyDataSetChanged()
             Toast.makeText(requireContext(), getString(R.string.refreshed), Toast.LENGTH_SHORT).show()
         })
 
         binding.rv.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = CurrencyListAdapter(model.tickerList)
+            adapter = CurrencyListAdapter(viewModel.tickerList)
         }
     }
 
