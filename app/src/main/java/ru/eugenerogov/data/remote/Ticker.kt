@@ -1,10 +1,17 @@
 package ru.eugenerogov.data.remote
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
+import java.util.*
 
 @Parcelize
+@Entity
 data class Ticker(
+    @PrimaryKey val uuid: UUID = UUID.randomUUID(),
+    var date: Date = Date(),
+
     var title: String = "",
     var urlIcon: String = "",
 
