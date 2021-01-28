@@ -1,18 +1,15 @@
 package ru.eugenerogov.ui.currencyDetail
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class CurrencyDetailViewModel @ViewModelInject constructor(
+@HiltViewModel
+class CurrencyDetailViewModel @Inject constructor(
 
 ) : ViewModel() {
     companion object {
         val TAG: String = CurrencyDetailViewModel::class.java.simpleName
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-
     }
 
 }

@@ -44,7 +44,7 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
         }
     }
 
-    private inner class CurrencyHolder(private val binding: CurrencyListItemBinding) :
+    private inner class CurrencyHolder(binding: CurrencyListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val cl: ConstraintLayout = binding.cl
         val ivFavorite: ImageView = binding.ivLogo

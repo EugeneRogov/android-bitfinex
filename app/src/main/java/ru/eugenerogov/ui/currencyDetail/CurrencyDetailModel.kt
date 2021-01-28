@@ -1,4 +1,3 @@
 package ru.eugenerogov.ui.currencyDetail
 
-class CurrencyDetailModel {
-}
+class CurrencyDetailModel

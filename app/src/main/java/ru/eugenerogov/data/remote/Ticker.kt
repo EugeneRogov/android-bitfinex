@@ -27,5 +27,4 @@ data class Ticker(
     var volume: Float = 0.0F,
     var high: Float = 0.0F,
     var low: Float = 0.0F,
-) : Parcelable {
-}
+) : Parcelable

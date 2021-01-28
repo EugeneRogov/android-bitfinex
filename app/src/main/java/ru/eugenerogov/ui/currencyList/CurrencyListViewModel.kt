@@ -1,16 +1,18 @@
 package ru.eugenerogov.ui.currencyList
 
 import android.util.Log
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import okhttp3.*
-import ru.eugenerogov.data.remote.ServerHost
 import ru.eugenerogov.data.local.CurrencyPair
+import ru.eugenerogov.data.remote.ServerHost
 import ru.eugenerogov.data.remote.Ticker
+import javax.inject.Inject
 
-class CurrencyListViewModel @ViewModelInject constructor(
+@HiltViewModel
+class CurrencyListViewModel @Inject constructor(
 
 ) : ViewModel() {
     companion object {

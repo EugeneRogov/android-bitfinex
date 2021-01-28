@@ -10,7 +10,7 @@ interface TickerDao {
     @Query("SELECT * FROM ticker")
     fun getTickers(): List<Ticker>
 
-    @Query("SELECT * FROM ticker WHERE uuid=(:uuid)")
-    fun getTicker(id: UUID): Ticker?
+//    @Query("SELECT * FROM ticker WHERE uuid=(:uuid)")
+//    fun getTicker(id: UUID): Ticker?
 
 }
