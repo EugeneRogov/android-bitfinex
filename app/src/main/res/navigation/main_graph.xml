@@ -10,6 +10,7 @@
         android:name="ru.eugenerogov.ui.currencyList.CurrencyList"
         android:label="currency_list_fragment"
         tools:layout="@layout/currency_list_fragment">
+
         <action
             android:id="@+id/action_currencyList_to_currencyDetail"
             app:destination="@id/currencyDetail"
@@ -27,6 +28,11 @@
         android:id="@+id/currencyDetail"
         android:name="ru.eugenerogov.ui.currencyDetail.CurrencyDetail"
         android:label="currency_detail_fragment"
-        tools:layout="@layout/currency_detail_fragment" />
+        tools:layout="@layout/currency_detail_fragment">
+
+        <argument
+            android:name="ticker"
+            app:argType="ru.eugenerogov.data.remote.Ticker" />
+    </fragment>
 
 </navigation>
