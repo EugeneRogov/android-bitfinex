@@ -14,19 +14,17 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CurrencyListViewModel @Inject constructor(
-
+    client: OkHttpClient, tickerRepository: TickerRepository
 ) : ViewModel() {
     companion object {
         val TAG: String = CurrencyListViewModel::class.java.simpleName
         private const val NORMAL_CLOSURE_STATUS = 1000
     }
 
-    private val tickerRepository = TickerRepository.get()
     val tickerListLiveData = tickerRepository.getTickers()
 
     val tickerList = mutableListOf<Ticker>()
 
-    private var client: OkHttpClient = OkHttpClient()
     private var ws: WebSocket
 
     private var ldTicker = MutableLiveData<Ticker>()
