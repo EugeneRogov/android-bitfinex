@@ -5,6 +5,4 @@ import dagger.hilt.android.AndroidEntryPoint
 import ru.eugenerogov.R
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
-
-}
+class MainActivity : AppCompatActivity(R.layout.activity_main)
