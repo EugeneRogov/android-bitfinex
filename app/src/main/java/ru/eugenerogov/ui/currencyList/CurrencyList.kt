@@ -1,6 +1,7 @@
 package ru.eugenerogov.ui.currencyList
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -10,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -32,10 +34,16 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
         super.onViewCreated(view, savedInstanceState)
         val binding = CurrencyListFragmentBinding.bind(view)
 
-        // observe refresh
-        viewModel.ticker().observe(viewLifecycleOwner, {
+        // observe refresh from server
+        viewModel.ticker().observe(viewLifecycleOwner, Observer {
             binding.rv.adapter?.notifyDataSetChanged()
-            Toast.makeText(requireContext(), getString(R.string.refreshed), Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.refreshed), Toast.LENGTH_SHORT)
+                .show()
+        })
+
+        // observe data base
+        viewModel.tickerListLiveData.observe(viewLifecycleOwner, Observer {
+            Log.i(TAG, "Got tickers ${it.size}")
         })
 
         binding.rv.apply {
@@ -74,7 +82,8 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
                 tvLastPrice.text = ticker.lastPrice.toString()
                 tv24HoursChange.text = ticker.dailyChange.toString()
                 cl.setOnClickListener {
-                    val directions = CurrencyListDirections.actionCurrencyListToCurrencyDetail(ticker)
+                    val directions =
+                        CurrencyListDirections.actionCurrencyListToCurrencyDetail(ticker)
                     findNavController().navigate(directions)
                 }
             }

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import okhttp3.*
+import ru.eugenerogov.data.TickerRepository
 import ru.eugenerogov.data.local.CurrencyPair
 import ru.eugenerogov.data.remote.ServerHost
 import ru.eugenerogov.data.remote.Ticker
@@ -19,6 +20,9 @@ class CurrencyListViewModel @Inject constructor(
         val TAG: String = CurrencyListViewModel::class.java.simpleName
         private const val NORMAL_CLOSURE_STATUS = 1000
     }
+
+    private val tickerRepository = TickerRepository.get()
+    val tickerListLiveData = tickerRepository.getTickers()
 
     val tickerList = mutableListOf<Ticker>()
 

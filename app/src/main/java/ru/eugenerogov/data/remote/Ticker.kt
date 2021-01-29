@@ -3,7 +3,7 @@ package ru.eugenerogov.data.remote
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kotlinx.parcelize.Parcelize
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Parcelize
@@ -26,5 +26,5 @@ data class Ticker(
     var lastPrice: Float = 0.0F,
     var volume: Float = 0.0F,
     var high: Float = 0.0F,
-    var low: Float = 0.0F,
+    var low: Float = 0.0F
 ) : Parcelable
