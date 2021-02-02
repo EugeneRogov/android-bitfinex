@@ -2,8 +2,7 @@ package ru.eugenerogov.ui.currencyList
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -29,6 +28,11 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
 
     private val viewModel: CurrencyListViewModel by viewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = CurrencyListFragmentBinding.bind(view)
@@ -49,6 +53,15 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
             layoutManager = LinearLayoutManager(context)
             adapter = CurrencyListAdapter(viewModel.tickerList)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.main_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     private inner class CurrencyHolder(binding: CurrencyListItemBinding) :

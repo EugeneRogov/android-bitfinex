@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/profile_main_menu"
+        android:icon="@mipmap/ic_launcher"
+        android:orderInCategory="1"
+        android:title="@string/app_name"
+        app:showAsAction="ifRoom" />
+
+</menu>
