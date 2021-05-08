@@ -5,7 +5,7 @@
 
         <variable
             name="currencyListModel"
-            type="ru.eugenerogov.ui.currencyList.CurrencyListModel" />
+            type="ru.eugenerogov.ui.currencyList.CurrencyListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"

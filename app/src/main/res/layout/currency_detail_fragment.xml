@@ -5,7 +5,7 @@
 
         <variable
             name="currencyDetailModel"
-            type="ru.eugenerogov.ui.currencyDetail.CurrencyDetailModel" />
+            type="ru.eugenerogov.ui.currencyDetail.CurrencyDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
