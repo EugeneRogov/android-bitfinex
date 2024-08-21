@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
-import missing.namespace.R
-import missing.namespace.databinding.CurrencyDetailFragmentBinding
+import ru.eugenerogov.R
+import ru.eugenerogov.databinding.CurrencyDetailFragmentBinding
 
 @AndroidEntryPoint
 class CurrencyDetail : Fragment(R.layout.currency_detail_fragment) {
