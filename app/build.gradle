@@ -35,6 +35,8 @@ android {
     buildFeatures {
         dataBinding true
     }
+
+    namespace 'ru.eugenerogov'
 }
 
 dependencies {

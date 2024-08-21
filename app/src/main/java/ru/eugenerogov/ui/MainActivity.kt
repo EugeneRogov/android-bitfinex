@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
-import missing.namespace.R
-import missing.namespace.databinding.ActivityMainBinding
+import ru.eugenerogov.R
+import ru.eugenerogov.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

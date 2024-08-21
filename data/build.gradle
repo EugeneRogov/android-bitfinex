@@ -29,6 +29,8 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    namespace 'ru.eugenerogov.data'
 }
 
 dependencies {
