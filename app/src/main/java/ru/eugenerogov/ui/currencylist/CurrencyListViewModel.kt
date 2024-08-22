@@ -1,4 +1,4 @@
-package ru.eugenerogov.ui.currencyList
+package ru.eugenerogov.ui.currencylist
 
 import android.util.Log
 import androidx.lifecycle.LiveData

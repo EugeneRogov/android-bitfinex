@@ -1,4 +1,4 @@
-package ru.eugenerogov.ui.currencyDetail
+package ru.eugenerogov.ui.currencydetail
 
 import android.os.Bundle
 import android.view.View

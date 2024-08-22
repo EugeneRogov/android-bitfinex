@@ -7,7 +7,7 @@
         android:id="@+id/cl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".ui.currencyList.CurrencyList">
+        tools:context=".ui.currencylist.CurrencyList">
 
         <ImageView
             android:id="@+id/ivLogo"

@@ -2,10 +2,14 @@ buildscript {
     ext {
         kotlin_version = '1.9.24'
         kotlin_coroutines_version = '1.8.1'
-        hilt_version = '2.52'
-        // https://developer.android.com/codelabs/android-hilt?hl=fr#0
+        retrofit_version = '2.11.0'                     // https://square.github.io/retrofit/
+        gson_version = '2.11.0'                         // https://github.com/google/gson
+        hilt_version = '2.52'                           // https://developer.android.com/codelabs/android-hilt?hl=fr#0
+        glide_version = '4.16.0'                        // https://github.com/bumptech/glide
+        okhttp_version = '5.0.0-alpha.14'               // https://square.github.io/okhttp/
+        room_version = '2.6.1'                          // https://developer.android.com/jetpack/androidx/releases/room
     }
-        ext.kotlin_version = '1.6.21'
+
     repositories {
         google()
         mavenCentral()
