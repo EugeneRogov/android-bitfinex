@@ -1,4 +1,4 @@
-package ru.eugenerogov.ui.currencyList
+package ru.eugenerogov.ui.currencylist
 
 import android.os.Bundle
 import android.util.Log
@@ -45,9 +45,9 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
         })
 
         // observe data base
-        viewModel.tickerListLiveData.observe(viewLifecycleOwner, {
+        viewModel.tickerListLiveData.observe(viewLifecycleOwner) {
             Log.i(TAG, "Got tickers ${it.size}")
-        })
+        }
 
         binding.rv.apply {
             layoutManager = LinearLayoutManager(context)
