@@ -40,4 +40,14 @@ class RemoteModule {
             .addConverterFactory(GsonConverterFactory.create())
         return builder.build()
     }
+
+//    @Singleton
+//    @Provides
+//    fun provideWebSocketClient(okHttpClient: OkHttpClient): Retrofit {
+//        val builder: Retrofit.Builder = Retrofit.Builder()
+//            .client(okHttpClient)
+//            .baseUrl(ServerHost.BASE_URL)
+//            .addConverterFactory(GsonConverterFactory.create())
+//        return builder.build()
+//    }
 }
