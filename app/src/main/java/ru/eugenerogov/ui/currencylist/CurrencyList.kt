@@ -38,11 +38,10 @@ class CurrencyList : Fragment(R.layout.currency_list_fragment) {
         val binding = CurrencyListFragmentBinding.bind(view)
 
         // observe refresh from server
-        viewModel.ticker().observe(viewLifecycleOwner, {
+        viewModel.ticker().observe(viewLifecycleOwner) {
             binding.rv.adapter?.notifyDataSetChanged()
-            Toast.makeText(requireContext(), getString(R.string.refreshed), Toast.LENGTH_SHORT)
-                .show()
-        })
+            Toast.makeText(requireContext(), getString(R.string.refreshed), Toast.LENGTH_SHORT).show()
+        }
 
         // observe data base
         viewModel.tickerListLiveData.observe(viewLifecycleOwner) {

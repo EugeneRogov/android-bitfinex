@@ -14,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CurrencyListViewModel @Inject constructor(
-    client: OkHttpClient, tickerRepository: TickerRepository
+    client: OkHttpClient,
+    tickerRepository: TickerRepository
 ) : ViewModel() {
     companion object {
         val TAG: String = CurrencyListViewModel::class.java.simpleName
